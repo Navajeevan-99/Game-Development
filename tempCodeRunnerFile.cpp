@@ -1,0 +1,1 @@
+ g++ -std=c++23 sam.cpp -I"/media/navajeevan/CONTENT/Linux works/c++/Game Development/SFML-3.0.2/include" -L"/media/navajeevan/CONTENT/Linux works/c++/Game Development/SFML-3.0.2/lib" -lsfml-graphics -lsfml-window -lsfml-system -o sam.out && LD_LIBRARY_PATH="/media/navajeevan/CONTENT/Linux works/c++/Game Development/SFML-3.0.2/lib" ./sam.out
