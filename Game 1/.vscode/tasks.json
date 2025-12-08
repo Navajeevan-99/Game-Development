@@ -1,0 +1,26 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build SFML (current file)",
+      "type": "shell",
+      "command": "g++",
+      "args": [
+        "-std=c++23",
+        "${file}",
+        "-I\"/media/navajeevan/CONTENT/Linux works/c++/Game Development/SFML-3.0.2/include\"",
+        "-L\"/media/navajeevan/CONTENT/Linux works/c++/Game Development/SFML-3.0.2/lib\"",
+        "-lsfml-graphics",
+        "-lsfml-window",
+        "-lsfml-system",
+        "-o",
+        "${fileDirname}/${fileBasenameNoExtension}"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": "$gcc"
+    }
+  ]
+}

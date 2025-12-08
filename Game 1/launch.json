@@ -1,0 +1,22 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug SFML (current file)",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${fileDirname}/${fileBasenameNoExtension}",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${fileDirname}",
+      "environment": [
+        {
+          "name": "LD_LIBRARY_PATH",
+          "value": "/media/navajeevan/CONTENT/Linux works/c++/Game Development/SFML-3.0.2/lib"
+        }
+      ],
+      "MIMode": "gdb",
+      "preLaunchTask": "Build SFML (current file)"
+    }
+  ]
+}
