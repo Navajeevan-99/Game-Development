@@ -8,6 +8,7 @@ car::car(float x,float y,float height,float width,string color)
     carheight=height;
     carwidth=width;
     carcolor=color;
+
     filesystem::path cwd=filesystem::current_path();
     if (carcolor=="blue"){
         carurl=(cwd/ "images/rectangleblue.png").string();
@@ -26,6 +27,7 @@ car::car(float x,float y,float height,float width,string color)
     carspr.setTexture(cartex,true);
     carspr.setPosition({carposx,carposy});
     carspr.setScale({carheight,carwidth});
+    carspr.setOrigin({(float)(height/2),(float)(width/2)});
 }
 sf::Sprite& car::getsprite(){
     return carspr;
@@ -77,10 +79,10 @@ square::square(float x,float y,float height,float width,string color)
     squarecolor=color;
     filesystem::path cwd=filesystem::current_path();
     if (squarecolor=="blue"){
-        squareurl=(cwd/ "images/rectangleblue.png").string();
+        squareurl=(cwd/ "images/squareblue.png").string();
     }
     else if (squarecolor=="red"){
-        squareurl=(cwd/ "images/rectanglered.png").string();
+        squareurl=(cwd/ "images/squarered.png").string();
     }
     else{
         return;
@@ -100,32 +102,49 @@ sf::Sprite& square::squaregetsprite(){
 sf::FloatRect square::squaregetbound(){
     return squarespr.getGlobalBounds();
 }
-int car::movecar(int side){
-    int i=1;
+int car::movecar(int side,sf::RenderWindow& window){
+         int i=1;
+         
     
         if (side==0){
+            carspr.rotate(sf::degrees(45.f));
             
-            while(i<=25){
+            while(window.isOpen() && i<=10){
                
                 
-                carspr.move({10.f,0.f});
-                this_thread::sleep_for(chrono::milliseconds(10));
+                carspr.move({25.f,0.f});
+                window.clear();
+                window.draw(carspr);
+                window.display();
+               
                 i++;
             }
+            carspr.rotate(sf::degrees(-45.f));
             return 1;
         }
         else{
-            while(i<=25){
-                for(int i;i<=10000000;i++);
-                
-                carspr.move({-10.f,0.f});
-                this_thread::sleep_for(chrono::milliseconds(10));
+            carspr.rotate(sf::degrees(-45.f));
+            while(window.isOpen() && i<=10){
+                carspr.move({-25.f,0.f});
                 i++;
+                window.clear();
+                window.draw(carspr);
+                window.display();
+
             }
+            carspr.rotate(sf::degrees(45.f));
             return 0;
        
         
     }
+    return 0;
     
+}
+void square::squaremove(){
+
+        squarespr.move({0.f,1.f});
+    
+    
+
 }
 

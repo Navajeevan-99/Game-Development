@@ -5,6 +5,7 @@
 #include<string>
 #include<thread>
 #include<chrono>
+#include<vector>
 class car{
     public:
     car(float x,float y,float height,float width,std::string color);
@@ -19,7 +20,7 @@ class car{
     sf::FloatRect carbound;
     sf::FloatRect getbound();
     sf::Sprite& getsprite();
-    int movecar(int side);
+    int movecar(int side,sf::RenderWindow& window);
 
 };
 class circle{
@@ -53,5 +54,6 @@ class square{
     sf::FloatRect squarebound;
     sf::FloatRect squaregetbound();
     sf::Sprite& squaregetsprite();
+    void squaremove();
 };
 
