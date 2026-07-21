@@ -1,0 +1,7 @@
+cd "/media/navajeevan/CONTENT/Linux works/c++/Game Development/Game 1/" && \
+g++ -std=c++23 main.cpp car.cpp \
+  -I"/media/navajeevan/CONTENT/Linux works/c++/Game Development/SFML-3.0.2/include" \
+  -L"/media/navajeevan/CONTENT/Linux works/c++/Game Development/SFML-3.0.2/lib" \
+  -lsfml-graphics -lsfml-window -lsfml-system \
+  -o main && \
+LD_LIBRARY_PATH="/media/navajeevan/CONTENT/Linux works/c++/Game Development/SFML-3.0.2/lib" ./main
