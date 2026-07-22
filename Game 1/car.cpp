@@ -8,7 +8,7 @@ car::car(float x,float y,float height,float width,string color)
     carheight=height;
     carwidth=width;
     carcolor=color;
-
+    carmoving=false;
     filesystem::path cwd=filesystem::current_path();
     if (carcolor=="blue"){
         carurl=(cwd/ "images/rectangleblue.png").string();
@@ -106,14 +106,15 @@ int car::movecar(int side,sf::RenderWindow& window,deque<sf::Sprite*> bluesquare
         int i=1;
         float degree=45.f;
         
+        
          
     
         if (side==0){
-           
+            carspr.rotate(sf::degrees(degree));
             
             while(window.isOpen() && i<=15){
-                carspr.rotate(sf::degrees(degree));
                 
+                carspr.rotate(sf::degrees(-3));
                 carspr.move({25.f,0.f});
                 bluecircleleft[1]->move({0.f,3.f});
             redcircleleft[1]->move({0.f,2.f});
@@ -134,17 +135,19 @@ int car::movecar(int side,sf::RenderWindow& window,deque<sf::Sprite*> bluesquare
             window.draw(*bluesquareright[1]);
             window.draw(*redsquareright[1]);
             window.display();
-            degree-=3;   
+              
             i++;
+            cout<<degree<<endl;
             }
             
             return 1;
         }
         else{
-            
-            carspr.rotate(sf::degrees(degree));
+            degree=-45.f;
+             carspr.rotate(sf::degrees(degree));
+
             while(window.isOpen() && i<=15){
-                degree=-45.f;
+                 carspr.rotate(sf::degrees(3));
                 carspr.move({-25.f,0.f});
                 bluecircleleft[1]->move({0.f,3.f});
             redcircleleft[1]->move({0.f,2.f});
@@ -166,9 +169,11 @@ int car::movecar(int side,sf::RenderWindow& window,deque<sf::Sprite*> bluesquare
             window.draw(*redsquareright[1]);
                 window.draw(carspr);
                 window.display();
-                degree+=3.f;
+                
+                cout<<degree<<endl;
             }
-            
+        
+             
             return 0;
        
         

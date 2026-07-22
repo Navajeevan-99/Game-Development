@@ -5,6 +5,7 @@ int main(){
     float speed=0.1;
     int bluecarside=0;
     int redcarside=1;
+    
     sf::RenderWindow window(sf::VideoMode({1920,1080}),"Two Cars");
     car carblue(1100.f,700.f,0.5f,0.5f,"blue");
     sf::Sprite& bluecar=carblue.getsprite();
@@ -12,6 +13,15 @@ int main(){
     sf::Sprite& redcar=carred.getsprite();
     sf::FloatRect carbluebound=carblue.getbound();
     sf::FloatRect carredbound=carred.getbound();
+    bluecar.setOrigin({
+        carbluebound.size.x/2.f,
+        carbluebound.size.y/2.f
+    });
+    redcar.setOrigin({
+        carredbound.size.x/2.f,
+        carredbound.size.y/2.f
+    });
+
     //blue circles definition
     deque<circle> circleblueleft;
     deque<circle> circleblueright;
@@ -76,9 +86,14 @@ int main(){
             }
             if (auto* keycode=event->getIf<sf::Event::KeyPressed>()){
                 if (keycode->code==sf::Keyboard::Key::K){
-
+                    if(carblue.carmoving){
+                        cout<<"moving";
+                    }
+                    else{
+                    carblue.carmoving=true;
                     bluecarside=carblue.movecar(bluecarside,window,bluesquareleft,bluesquareright,bluecircleleft,bluecircleright,redsquareleft,redsquareright,redcircleleft,redcircleright,speed);
-                    
+                    carblue.carmoving=false;
+                }
                 }
                 if (keycode->code==sf::Keyboard::Key::S){
 
