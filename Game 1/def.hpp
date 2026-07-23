@@ -5,6 +5,7 @@
 #include<string>
 #include<thread>
 #include<chrono>
+#include<random>
 #include<deque>
 
 
@@ -23,7 +24,7 @@ class car{
     sf::FloatRect getbound();
     sf::Sprite& getsprite();
     bool carmoving;
-    int movecar(int side,sf::RenderWindow& window,std::deque<sf::Sprite*> bluesquareleft,std::deque<sf::Sprite*> bluesquareright,std::deque<sf::Sprite*> bluecircleleft,std::deque<sf::Sprite*> bluecircleright,std::deque<sf::Sprite*> redsquareleft,std::deque<sf::Sprite*> redsquareright,std::deque<sf::Sprite*> redcircleleft,std::deque<sf::Sprite*> redcircleright,float speed);
+    int movecar(int side,sf::RenderWindow& window,std::deque<sf::Sprite*> bluesquareleft,std::deque<sf::Sprite*> bluesquareright,std::deque<sf::Sprite*> bluecircleleft,std::deque<sf::Sprite*> bluecircleright,std::deque<sf::Sprite*> redsquareleft,std::deque<sf::Sprite*> redsquareright,std::deque<sf::Sprite*> redcircleleft,std::deque<sf::Sprite*> redcircleright,float speed,sf::Sprite& anothercar);
 
 };
 class circle{
@@ -38,7 +39,7 @@ class circle{
     sf::Texture circletex;
     sf::Sprite circlespr;
     sf::FloatRect circlebound;
-    sf::FloatRect circlegetbound();
+    void circlegetbound();
     sf::Sprite& circlegetsprite();
 
 };
@@ -55,7 +56,7 @@ class square{
     sf::Texture squaretex;
     sf::Sprite squarespr;
     sf::FloatRect squarebound;
-    sf::FloatRect squaregetbound();
+    void squaregetbound();
     sf::Sprite& squaregetsprite();
     void squaremove();
 };

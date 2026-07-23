@@ -66,8 +66,9 @@ circle::circle(float x,float y,float height,float width,string color)
 sf::Sprite& circle::circlegetsprite(){
     return circlespr;
 }
-sf::FloatRect circle::circlegetbound(){
-    return circlespr.getGlobalBounds();
+void circle::circlegetbound(){
+    circlebound=circlespr.getGlobalBounds();
+    
 }
 square::square(float x,float y,float height,float width,string color)
 :squarespr(squaretex)
@@ -99,10 +100,11 @@ square::square(float x,float y,float height,float width,string color)
 sf::Sprite& square::squaregetsprite(){
     return squarespr;
 }
-sf::FloatRect square::squaregetbound(){
-    return squarespr.getGlobalBounds();
+void square::squaregetbound(){
+    squarebound=squarespr.getGlobalBounds();
+
 }
-int car::movecar(int side,sf::RenderWindow& window,deque<sf::Sprite*> bluesquareleft,deque<sf::Sprite*> bluesquareright,deque<sf::Sprite*> bluecircleleft,deque<sf::Sprite*> bluecircleright,deque<sf::Sprite*> redsquareleft,deque<sf::Sprite*> redsquareright,deque<sf::Sprite*> redcircleleft,deque<sf::Sprite*> redcircleright,float speed){
+int car::movecar(int side,sf::RenderWindow& window,deque<sf::Sprite*> bluesquareleft,deque<sf::Sprite*> bluesquareright,deque<sf::Sprite*> bluecircleleft,deque<sf::Sprite*> bluecircleright,deque<sf::Sprite*> redsquareleft,deque<sf::Sprite*> redsquareright,deque<sf::Sprite*> redcircleleft,deque<sf::Sprite*> redcircleright,float speed,sf::Sprite& anothercar){
         int i=1;
         float degree=45.f;
         
@@ -116,14 +118,14 @@ int car::movecar(int side,sf::RenderWindow& window,deque<sf::Sprite*> bluesquare
                 
                 carspr.rotate(sf::degrees(-3));
                 carspr.move({25.f,0.f});
-                bluecircleleft[1]->move({0.f,3.f});
-            redcircleleft[1]->move({0.f,2.f});
-            bluecircleright[1]->move({0.f,2.5f});
-            redcircleright[1]->move({0.f,2.2f});
-            bluesquareleft[1]->move({0.f,1.f});
-            redsquareleft[1]->move({0.f,1.5f});
-            bluesquareright[1]->move({0.f,6.f});
-            redsquareright[1]->move({0.f,0.5f});
+                bluecircleleft[1]->move({0.f,speed});
+            redcircleleft[1]->move({0.f,speed});
+            bluecircleright[1]->move({0.f,speed});
+            redcircleright[1]->move({0.f,speed});
+            bluesquareleft[1]->move({0.f,speed});
+            redsquareleft[1]->move({0.f,speed});
+            bluesquareright[1]->move({0.f,speed});
+            redsquareright[1]->move({0.f,speed});
                 window.clear();
                 window.draw(carspr);
             window.draw(*bluecircleleft[1]);
@@ -167,10 +169,11 @@ int car::movecar(int side,sf::RenderWindow& window,deque<sf::Sprite*> bluesquare
             window.draw(*redsquareleft[1]);
             window.draw(*bluesquareright[1]);
             window.draw(*redsquareright[1]);
+            window.draw(anothercar);
                 window.draw(carspr);
                 window.display();
                 
-                cout<<degree<<endl;
+            
             }
         
              
